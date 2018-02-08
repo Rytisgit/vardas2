@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1518088720 source:c:\users\lenovo t440p\desktop\unversiteto c++\vardas\main.cpp
+	<iostream>
+	<string>
+	<fstream>
+	<stdlib.h>
+	<vector>
+
