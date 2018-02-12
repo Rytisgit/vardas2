@@ -3,7 +3,6 @@
 #include <fstream>
 #include <stdlib.h>
 #include <vector>
-
 //using namespace std;
 const std::vector<std::string> vyrGalunes {"as","is","ys","us"};
 const std::vector<std::string> vyrReplace {"ai","i","y","au"};
@@ -20,7 +19,7 @@ int main()
     std::cin>>vardas;
     system("cls");
     std::ifstream f1("vyr_vardai.txt");
-    auto v = false;
+    bool v = false;
     std::string temp{};
     while( !f1.eof() )
     {
@@ -31,38 +30,39 @@ int main()
             break;
         }
     }
-    auto m = false;
+    bool m = false;
+    f1.close();
     if(!v)
     {
         std::ifstream f1("mot_vardai.txt");
         while( !f1.eof() )
         {
             f1>>temp;
+            //std::cout<<temp;
             if(temp==vardas)
             {
                 m=true;
                 break;
             }
-            f1.close();
+
         }
-    }
+    f1.close();}
     else
     {
         for(int k=0; k<vyrGalunes.size(); k++)
         {
             if(ends_with(vardas,vyrGalunes[k]))
             {
-                v=true;
                 vardas.erase(vardas.end()-2,vardas.end());
                 vardas.append(vyrReplace[k]);
                 break;
             }
         }
     }
-    auto n{vardas.length()};
+    auto n=vardas.length();
     auto g=8;
     if(v)g++;
-    for( int i = 0; i<vardas.length()+g+4; i++)
+    for( int i = 0; i<n+g+4; i++)
     {
         std::cout<<"*";
     }
@@ -72,7 +72,7 @@ int main()
         std::cout<<"* ";
         if(j!=1)
         {
-            for( int i = 0; i<vardas.length()+g; i++)
+            for( int i = 0; i<n+g; i++)
             {
                 std::cout<<" ";
             }
@@ -88,7 +88,7 @@ int main()
         std::cout<<" *"<<std::endl;
     }
 
-    for( int i = 0; i<4+vardas.length()+g; i++)
+    for( int i = 0; i<n+4+g; i++)
     {
         std::cout<<"*";
     }
